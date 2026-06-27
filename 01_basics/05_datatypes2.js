@@ -41,3 +41,25 @@ NaN === NaN // false (NaN is never equal to itself)
 "5" - 3 // 2 (- forces number)
 Boolean("") // false (empty string = falsy)
 Boolean("0") // true (non-empty = truthy*/
+
+//************************************** */
+
+// stack(Primitive), Heap(NOn-Primitive)
+
+let myName = "Ashishkumar"
+
+let anotherName = myName
+anotherName = "Ram"
+
+console.log(anotherName);// we arre getting a copy of the myName, so change in anotherrName will be change in itself only
+console.log(myName);
+
+let userOne = {
+    email:"user@gmail.com",
+    upi:"user@byl"
+}
+let userTwo = userOne
+userTwo.email = "Anidn@gmail.com"
+
+console.log(userOne.email);
+
