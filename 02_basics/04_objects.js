@@ -71,12 +71,12 @@ const {courseInstructuor:instructor} = course
 console.log(instructor);
 
 //APIs:json
-{
-   " name":"Ashish",
-    "coursename":'js',
-    "price":"free"
+// {
+//    " name":"Ashish",
+//     "coursename":'js',
+//     "price":"free"
 
-}
+// }
 
 [
     {},
