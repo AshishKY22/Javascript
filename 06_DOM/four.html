@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body style="background-color: black; color: white;">
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+</body>
+
+<script>
+
+ /* we will bw adding another list item */
+ /*writing a function for that*/
+ function addLanguage(langName){
+    const li = document.createElement('li')
+    li.innerHTML = `${langName}`
+    document.querySelector('.language').appendChild(li)
+    
+ } 
+ addLanguage("Python")
+ addLanguage("CSS")
+
+ /*optimised approach*/
+
+ function addOptiLanguage(langName){
+    const li = document.createElement('li')
+    li.appendChild(document.createTextNode(langName))
+    document.querySelector('.language').appendChild(li)
+ }
+ addOptiLanguage('golang')
+
+
+ //now editing value
+ const secondlang = document.querySelector("li:nth-child(2)")//selecting the element jisko replace karna hai
+ console.log(secondlang);
+ 
+//  secondlang.innerhtml = "Mojo"
+const newli = document.createElement('li')
+newli.textContent = "Mojo" // abhi ye cheej hawa me hai not added anywher
+secondlang.replaceWith(newli)
+
+//ediut
+const firstLang = document.querySelector("li:nth-child(1)")
+// const newli1 = document.createElement('li')
+// newli1.textContent = "Bits"
+// firstLang.replaceWith(newli1)  
+firstLang.outerHTML = '<li>Bits</li>'
+
+
+//remove
+const lastchild = document.querySelector("li:last-child")
+lastchild.remove()
+
+</script>
+</html>
