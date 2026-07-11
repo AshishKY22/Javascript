@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html elements</title>
+</head>
+<body style="background-color: darkgray;color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div>
+    <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" onclick="alert('owl')"></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+</body>
+
+<script>
+    //all events run sequently in javascript
+    //browser events occur on some activities
+    // document.getElementById('owl').onclick = function(){
+    //     alert('owl clicked')
+    //     //use event listeners as this way gives less features
+    // }
+
+
+    //attachEvent()
+    //jQuery-on
+    //addEventListener
+    // document.getElementById('owl').addEventListener('click',function(){
+    //     alert('owl clicked')
+    // },false/*by default*/)
+
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log(e);
+        
+    // },false/*event propagation :: false = event bubbling, true:: event capturing */)
+    //type,timestamp,defaultPrevented
+    //target, toElement, srcElement,currentTarget
+    //clientX,clientY,screenX,screenY
+    //altkey, ctrlkey, shiftkey, keyCode
+
+    //  document.getElementById('images').addEventListener('click',function(e){
+    //     console.log('Clicked inside the url');
+        
+    // },false)
+
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log('Owl clicked');
+    //     e.stopPropagation(e)//aab mera bubble hoke upar nhi jayega li tak hi reh jayega
+        
+    // },false)/*bubbling :: first owl cliscked gets printed then clicked inside the url , when we click on owl ......true:: capturing me pehle ul then li*/ 
+
+    // document.getElementById('google').addEventListener('click', function(e){ 
+    //     e.preventDefault()//open hoga url but khulega nhi i.e. propagation hoga waha tak sirf
+    //     /*e.preventDefault();   // ✅ Prevents the default action (opening the link)
+    //     e.defaultPrevented;   // ✅ Returns true/false*/
+    //     e.stopPropagation()// this doesnt allow propagation also
+    //      console.log('google clicked');
+    // }) // prevents from opening the google link
+
+
+
+
+    //wanna click on the photo and they should get removed
+
+    // document.querySelector('#images').addEventListener('click',function(e){
+    //     console.log(e.target.parentNode);
+    //     let removeIt = e.target.parentNode
+    //     //e.target :: <img> : the element that is being clicked,,,e.target.parentNode::<li>:parent of the clicked element
+    //     //removeIt.remove() :: the element removes it himself
+    //     removeIt.parentNode.removeChild(removeIt)//the parent removes the child;; ul ko bulaya and asked it to remove the li(removeIt)
+
+    // })
+    ///but google ke paas click kiya everything vanishes?? list item pe click kar diya -> parent mila(ul) removeIt.remove():: ul hi removed:::have to put strict checks
+
+
+    document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e.target.tagName);//IMG, LI
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id);//photoshop, river etc.
+             let removeIt = e.target.parentNode
+             removeIt.parentNode.removeChild(removeIt)
+            
+        }
+       
+
+    })
+
+
+    
+
+</script>
+</html>
