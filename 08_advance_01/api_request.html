@@ -54,6 +54,10 @@
         xhr.onload = function(){
             const data = JSON.parse(xhr.responseText);
             //we create the div and img element
+
+            /*div.appendChild(data.photo) — you can't append a string/number
+                appendChild() only accepts DOM nodes, not plain values. 
+                If data.photo is a URL string and data.followers is a number, you need to either create elements and set their content, or set textContent/src*/
             const div = document.createElement("div");
             const img = document.createElement("img");
             img.src = data.photo;
