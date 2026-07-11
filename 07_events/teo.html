@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ak and code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    //functions 
+    // setTimeout is JavaScript's way of scheduling a function to run after a delay
+    /*const timeoutId = setTimeout(callback, delay, arg1, arg2, ...);
+    callback — function to run
+    delay — milliseconds to wait (default 0 if omitted)
+    arg1, arg2, ... — optional arguments passed to the callback when it runs
+    returns a timeout ID (a number in browsers, a Timeout object in Node.js)*/
+    // setTimeout(function(){
+    //     console.log("ashish");
+        
+    // },2000);
+    // // ek baar ashish prints
+    // setInterval(function(){
+    //     console.log("coder");
+        
+    // },2000)
+    // //will continuously keeps printing coder after every 2 sec
+
+    const sayName = function(){
+        console.log('ashish');
+        
+    }
+    //change h1 name
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = "Best javascript"
+    }
+    
+    setTimeout(sayName,2000);//reference:sayName: dena execute nhi::sayName()
+    const changeme = setTimeout(changeText,2000);//2 sec baad h1 change kar dega 
+
+    //i wanna stop the event from happening after it has not occured after the given timer
+    // clearTimeout(changeme);
+    // //but i wanna keep that thing on an event like the stop button
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeme);
+        console.log("Stopped");
+        
+    })
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ak and code</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    
+</body>
+<script>
+//     const sayDate = function(str){
+//         console.log(str,Date.now());
+//     }
+//    const intervalId = setInterval(sayDate,1000,"hi");
+
+   //wanna remove or stop
+//    clearInterval(intervalId)
+
+   //wanna start the setInterval when start button is pressed and stop it with stop button
+
+   document.querySelector('#start').addEventListener('click',function(){
+        const sayDate = function(str){
+        console.log(str,Date.now());
+        }
+        const intervalId = setInterval(sayDate,1000,"hi");
+
+        document.querySelector('#stop').addEventListener('click',function(){
+            clearInterval(intervalId);
+        })
+   })
+
+   
+</script>
+</html>

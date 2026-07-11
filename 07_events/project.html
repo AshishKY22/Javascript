@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ak and code</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    
+</body>
+<script>
+//wanna change the background instead of printing
+//generate a random color
+    const randomColor = function(){
+        const hex = "0123456789ABCDEF"
+        let color = '#'
+        for(let i =0; i<6; i++){
+            color += hex[Math.floor(Math.random()*16)]
+        }
+        return color;
+    }
+
+    // console.log(randomColor());
+    let intervalId;
+    const startChangingColor = function(){
+
+        intervalId = setInterval(changeBgColor,1000);
+        function changeBgColor(){
+            document.body.style.backgroundColor = randomColor();
+        }
+        
+    };
+    const stopChangingColor = function(){
+        clearInterval(intervalId);
+        intervalId = null;//just flushed after its work
+    };
+
+
+    document.querySelector('#start').addEventListener('click',startChangingColor)
+    document.querySelector('#stop').addEventListener('click',stopChangingColor)
+    
+    
+</script>
+</html>
