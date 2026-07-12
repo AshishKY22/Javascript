@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Click</button>
+</body>
+<script>
+    class React{
+        constructor(){
+            this.library = "React"
+            this.server = "https:/localhost:300"
+
+            //requirement 
+            document.querySelector('button')
+            .addEventListener('click',this.handleClick.bind(this))//upar wale variables and functions bhi bhej diye handleClick ke saath
+
+
+        }
+        handleClick(){
+            console.log("Button clicked");
+            console.log(this.server);
+            
+            
+        }
+    }
+
+    const app = new React()
+</script>
+</html>
+
+
+
+/*## `bind()`
+
+`this` depends on HOW a function is called, not where it's written.
+
+```javascript
+class React {
+  handleClick() {
+    console.log(this);
+  }
+}
+```
+
+- `app.handleClick()` → `this` = `app` ✅ (object left of the dot)
+- `button.addEventListener('click', this.handleClick)` → later called as `button.handleClick()` → `this` = `button` ❌ (function got "detached" from the object)
+
+**`.bind(this)`** creates a new function permanently locked to a specific `this`, no matter who calls it later.
+
+```javascript
+document.querySelector('button')
+  .addEventListener('click', this.handleClick.bind(this));
+// this.handleClick.bind(this) → this always = React instance, forever
+```
+
+**Analogy:** a function normally calls whoever's holding it "boss." Hand it to someone else (the button) and "boss" now means them. `.bind()` tapes a permanent photo of the original owner to the function so "boss" never changes.
+
+**Alternative fix — arrow function** (inherits `this` from surrounding scope automatically, no `.bind()` needed):
+```javascript
+document.querySelector('button')
+  .addEventListener('click', () => this.handleClick());
+```
+
+**When to use `.bind()`:** passing a class method as a callback (event listeners, `setTimeout`, array methods) where it'll be called later, detached from the object.*/
